@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Descargador de YouTube</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="title">Descargar Video</h1>
+      <input type="text" id="videoUrl" placeholder="URL del Video" />
+      <p class="etiqueta">Calidad del Video:</p>
+      <select id="videoQuality">
+        <option value="720">720p</option>
+        <option value="1080">1080p</option>
+      </select>
+      <p class="etiqueta">Formato del Video:</p>
+      <select id="videoFormat">
+        <option value="webm">WebM</option>
+        <option value="mp4">MP4</option>
+        <!-- Añade más formatos según sea necesario -->
+      </select>
+
+      <button id="downloadButton">Descargar Video</button>
+
+      <div id="statusMessage" class="statusMessage"></div>
+
+      <div class="progressBarContainer">
+        <div id="videoProgressBar" class="progressBar"></div>
+        <div id="progressText" class="progressText">0%</div>
+        <!-- Agregado -->
+      </div>
+
+      <br />
+      <!-- <div id="audioProgressContainer" class="progressBarContainer">
+        <div id="audioProgressBar" class="progressBar audioProgressBar">0%</div>
+      </div> -->
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
