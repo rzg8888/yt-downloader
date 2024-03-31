@@ -6,12 +6,12 @@ const path = require("path");
 const WebSocket = require("ws");
 const hbjs = require("handbrake-js"); // Asegúrate de que Handbrake-js esté instalado
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
+require("dotenv").config(); // Al principio de tu archivo
 
 app.use(
   cors({
-    origin:
-      "https://yt-downloader-wcyg.onrender.com:3000" || "http://localhost:3000",
+    origin: process.env.CORS_ORIGIN || "http://localhost:3000",
   })
 );
 app.use(express.json());
@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 const server = app.listen(port, () =>
-  console.log(`Servidor escuchando en http://localhost:${port}`)
+  console.log(`Servidor escuchando en el puerto ${port}`)
 );
 
 const wss = new WebSocket.Server({ server });
