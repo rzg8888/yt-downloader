@@ -34,7 +34,8 @@ function hideStatusMessage() {
 
 function downloadVideo() {
   showStatusMessage("Procesando...");
-  const ws = new WebSocket("ws://localhost:3000");
+  const wsProtocol = window.location.protocol === "https:" ? "wss:" : "ws:";
+  const ws = new WebSocket(`${wsProtocol}//${window.location.host}`);
 
   ws.onmessage = function (event) {
     const data = JSON.parse(event.data);
