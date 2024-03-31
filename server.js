@@ -8,7 +8,12 @@ const hbjs = require("handbrake-js"); // Asegúrate de que Handbrake-js esté in
 const app = express();
 const port = 3000;
 
-app.use(cors());
+app.use(
+  cors({
+    origin:
+      "https://yt-downloader-wcyg.onrender.com:3000" || "http://localhost:3000",
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
