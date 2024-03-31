@@ -4,10 +4,11 @@ const cors = require("cors");
 const fs = require("fs");
 const path = require("path");
 const WebSocket = require("ws");
-const hbjs = require("handbrake-js"); // Asegúrate de que Handbrake-js esté instalado
+const hbjs = require("handbrake-js");
 const app = express();
 const port = process.env.PORT || 3000;
-require("dotenv").config(); // Al principio de tu archivo
+
+require("dotenv").config();
 
 app.use(
   cors({
@@ -39,6 +40,12 @@ wss.on("connection", (ws) => {
 
 app.post("/downloadVideo", (req, res) => {
   const tempDir = path.join(__dirname, "temp");
+
+  // Crear el directorio temp si no existe
+  if (!fs.existsSync(tempDir)) {
+    fs.mkdirSync(tempDir, { recursive: true });
+  }
+
   fs.readdir(tempDir, (err, files) => {
     if (err) {
       console.error("Error al acceder al directorio temporal:", err);
